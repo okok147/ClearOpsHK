@@ -8,9 +8,11 @@ Premium static landing page for ClearOpsHK, built with React, Vite, TypeScript, 
 .
 ├── public/
 │   ├── brand/
-│   │   └── clearopshk-mark.svg
-│   ├── favicon.svg
-│   └── og-clearopshk.svg
+│   │   ├── apple-touch-icon.png
+│   │   ├── clearopshk-logo-cropped.png
+│   │   ├── clearopshk-logo.jpg
+│   │   ├── favicon-32.png
+│   │   └── icon-512.png
 ├── src/
 │   ├── content/
 │   │   └── site.ts

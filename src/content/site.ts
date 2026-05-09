@@ -2,9 +2,9 @@ export const site = {
   name: 'ClearOpsHK',
   email: 'enquiry@clearopshk.com',
   brand: {
-    logo: '/brand/clearopshk-mark.svg',
-    mark: '/brand/clearopshk-mark.svg',
-    alt: 'ClearOpsHK operations mark',
+    logo: '/brand/clearopshk-logo-cropped.png',
+    mark: '/brand/icon-512.png',
+    alt: 'ClearOpsHK lion C logo',
   },
   // TODO: Replace with the real Threads profile URL before launch.
   threadsUrl: 'https://www.threads.net/@clearopshk',
