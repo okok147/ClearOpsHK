@@ -1,18 +1,16 @@
 export const site = {
   name: 'ClearOpsHK',
   email: 'clearopshk@clearopshk.com',
-  // TODO: Replace with the real WhatsApp number before launch.
-  whatsappUrl: 'https://wa.me/852XXXXXXXX',
   // TODO: Replace with the real Threads profile URL before launch.
   threadsUrl: 'https://www.threads.net/@clearopshk',
-  seoTitle: 'ClearOpsHK｜香港小生意營運系統、Notion Dashboard、AI Workflow Integration',
+  seoTitle: 'ClearOpsHK｜香港本地營運系統、Notion Dashboard、AI Workflow Integration',
   seoDescription:
-    'ClearOpsHK 幫香港小生意將 WhatsApp、Excel、口頭交代同零散流程，整理成清楚、可追蹤、可交接嘅營運系統。',
+    'ClearOpsHK 幫香港公司將 WhatsApp、Excel、口頭交代同零散流程，整理成清楚、可追蹤、可交接嘅營運系統。',
   hero: {
     eyebrow: 'HONG KONG OPERATIONS SYSTEM',
     headline: '你間公司唔係唔努力，係營運太多嘢散咗。',
     subheadline:
-      'ClearOpsHK 幫香港小生意將 WhatsApp、Excel、口頭交代同零散流程，整理成一個清楚、可追蹤、可交接嘅營運系統。',
+      'ClearOpsHK 幫香港公司將 WhatsApp、Excel、口頭交代同零散流程，整理成一個清楚、可追蹤、可交接嘅營運系統。',
     primaryCta: '預約一次營運診斷',
     secondaryCta: '睇一個案例故事',
   },

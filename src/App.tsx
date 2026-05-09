@@ -121,7 +121,7 @@ function ButtonLink({
 
 function HeroVisual() {
   const messyNotes = [
-    { text: '阿Wing 話週五前覆', style: 'left-3 top-6 rotate-[-3deg]' },
+    { text: '客人週五前要覆', style: 'left-3 top-6 rotate-[-3deg]' },
     { text: 'Excel v7 final?', style: 'left-10 top-28 rotate-[2deg]' },
     { text: '客人語音 2:14', style: 'left-1 top-52 rotate-[-1deg]' },
   ]
@@ -546,13 +546,6 @@ function FinalCta() {
               <Mail className="h-4 w-4" aria-hidden="true" />
               {site.finalCta.button}
             </a>
-            <a
-              href={site.whatsappUrl}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/35 px-5 py-3 font-ui text-sm font-semibold text-white transition hover:bg-white/10"
-            >
-              <MessageCircle className="h-4 w-4" aria-hidden="true" />
-              WhatsApp
-            </a>
           </div>
         </div>
       </Reveal>
@@ -577,9 +570,6 @@ function Footer() {
           </a>
           <a className="transition hover:text-white" href={`mailto:${site.email}`}>
             Email
-          </a>
-          <a className="transition hover:text-white" href={site.whatsappUrl}>
-            WhatsApp
           </a>
         </div>
       </div>

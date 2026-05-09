@@ -26,7 +26,7 @@ Premium static landing page for ClearOpsHK, built with React, Vite, TypeScript, 
 
 ## Edit Content
 
-Most website copy, pricing placeholders, email, WhatsApp link, and social links live in:
+Most website copy, pricing placeholders, email, and social links live in:
 
 ```text
 src/content/site.ts
@@ -34,7 +34,6 @@ src/content/site.ts
 
 Look for `TODO` comments before launch:
 
-- WhatsApp number
 - Threads URL
 - Pricing placeholders
 - GitHub Pages base path in `vite.config.ts`
