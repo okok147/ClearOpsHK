@@ -4,14 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        paper: '#F7F3EA',
-        cream: '#FCFAF5',
+        paper: '#F6F7F4',
+        cream: '#FFFFFF',
         charcoal: '#111111',
         muted: '#5E625E',
-        slate: '#34413C',
-        line: '#D8D2C4',
-        accent: '#1F6B4E',
-        accentDark: '#174D39',
+        slate: '#34415A',
+        line: '#DCE2D8',
+        accent: '#0D3B66',
+        accentDark: '#082944',
         amber: '#C59B4E',
       },
       fontFamily: {

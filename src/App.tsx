@@ -1,14 +1,13 @@
+import { useMemo, useState } from 'react'
 import {
   ArrowDownRight,
   ArrowRight,
-  CalendarClock,
   Check,
   CheckCircle2,
   ClipboardList,
   FileText,
   Mail,
   MessageCircle,
-  NotebookText,
   PanelsTopLeft,
   ShieldCheck,
   Table2,
@@ -27,9 +26,7 @@ const iconMap = {
   customer: UserCheck,
   task: CheckCircle2,
   intake: ArrowDownRight,
-  meeting: NotebookText,
   sop: FileText,
-  maintenance: CalendarClock,
 }
 
 const serviceIcons = [
@@ -37,9 +34,7 @@ const serviceIcons = [
   iconMap.customer,
   iconMap.task,
   iconMap.intake,
-  iconMap.meeting,
   iconMap.sop,
-  iconMap.maintenance,
 ]
 
 function Reveal({
@@ -69,6 +64,29 @@ function Label({ children }: { children: React.ReactNode }) {
     <p className="font-ui text-[11px] font-semibold uppercase tracking-[0.18em] text-slate">
       {children}
     </p>
+  )
+}
+
+function BrandLockup({ inverse = false }: { inverse?: boolean }) {
+  return (
+    <span className="inline-flex items-center gap-3">
+      <span
+        className={cn(
+          'flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border bg-white shadow-sm',
+          inverse ? 'border-white/20' : 'border-line',
+        )}
+      >
+        <img src={site.brand.logo} alt="" className="h-full w-full object-cover" aria-hidden="true" />
+      </span>
+      <span
+        className={cn(
+          'font-ui text-sm font-semibold uppercase tracking-[0.16em]',
+          inverse ? 'text-white' : 'text-charcoal',
+        )}
+      >
+        {site.name}
+      </span>
+    </span>
   )
 }
 
@@ -138,7 +156,7 @@ function HeroVisual() {
       initial={{ opacity: 0, scale: 0.98 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-      className="relative min-h-[500px] overflow-hidden rounded-none border-y border-line bg-paper/70 md:min-h-[620px] md:border"
+      className="relative hidden min-h-[500px] overflow-hidden rounded-none border-y border-line bg-paper/70 md:block md:min-h-[600px] md:border"
       aria-label="由零散營運筆記整理成清晰系統圖的抽象示意"
     >
       <div className="absolute inset-0 blueprint-grid opacity-80" />
@@ -239,8 +257,8 @@ function Hero() {
     <header className="relative isolate overflow-hidden border-b border-line bg-paper">
       <div className="absolute inset-0 blueprint-grid opacity-45" />
       <nav className="relative mx-auto flex max-w-7xl items-center justify-between px-5 py-5 md:px-8">
-        <a href="#" className="font-ui text-sm font-semibold uppercase tracking-[0.16em] text-charcoal">
-          {site.name}
+        <a href="#" aria-label={site.name}>
+          <BrandLockup />
         </a>
         <a
           href={`mailto:${site.email}`}
@@ -251,7 +269,7 @@ function Hero() {
         </a>
       </nav>
 
-      <div className="relative grid min-h-[calc(100svh-73px)] grid-cols-1 items-center gap-10 px-5 pb-12 pt-8 md:grid-cols-[0.9fr_1.1fr] md:px-8 md:pb-16 lg:px-12">
+      <div className="relative grid grid-cols-1 items-center gap-10 px-5 pb-10 pt-5 md:min-h-[calc(100svh-73px)] md:grid-cols-[0.9fr_1.1fr] md:px-8 md:pb-16 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
@@ -259,20 +277,23 @@ function Hero() {
           className="mx-auto w-full max-w-xl md:ml-auto md:mr-0"
         >
           <Label>{site.hero.eyebrow}</Label>
-          <h1 className="mt-5 text-5xl font-semibold leading-[1.08] text-charcoal md:text-6xl lg:text-7xl">
+          <h1 className="mt-4 text-4xl font-semibold leading-[1.12] text-charcoal sm:text-5xl md:text-6xl lg:text-7xl">
             {site.hero.headline}
           </h1>
-          <p className="mt-6 text-lg leading-8 text-muted md:text-xl md:leading-9">
+          <p className="mt-5 text-base leading-7 text-muted md:text-xl md:leading-9">
             {site.hero.subheadline}
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href={`mailto:${site.email}?subject=ClearOpsHK 營運診斷`}>
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <ButtonLink href="#enquiry">
               {site.hero.primaryCta}
             </ButtonLink>
-            <ButtonLink href="#case-story" variant="secondary">
+            <ButtonLink href={`mailto:${site.email}?subject=ClearOpsHK 營運查詢`} variant="secondary">
               {site.hero.secondaryCta}
             </ButtonLink>
           </div>
+          <p className="mt-4 text-sm text-muted">
+            回覆信箱：<a className="font-semibold text-accent" href={`mailto:${site.email}`}>{site.email}</a>
+          </p>
         </motion.div>
         <HeroVisual />
       </div>
@@ -281,7 +302,7 @@ function Hero() {
 }
 
 function ProblemScene() {
-  const icons = [iconMap.whatsapp, iconMap.excel, iconMap.vip, iconMap.handover]
+  const icons = [iconMap.whatsapp, iconMap.task, iconMap.sop]
 
   return (
     <section className="section-shell">
@@ -292,7 +313,7 @@ function ProblemScene() {
           intro={site.problem.intro}
         />
       </Reveal>
-      <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-10 grid gap-4 md:grid-cols-3">
         {site.problem.scenes.map((scene, index) => {
           const Icon = icons[index]
           return (
@@ -313,83 +334,22 @@ function ProblemScene() {
   )
 }
 
-function BeforeAfter() {
-  return (
-    <section className="section-shell border-y border-line bg-cream">
-      <Reveal>
-        <SectionHeader label={site.comparison.label} title={site.comparison.title} />
-      </Reveal>
-      <div className="mt-12 grid gap-5 lg:grid-cols-2">
-        <Reveal>
-          <ComparisonPanel title={site.comparison.beforeTitle} tone="before" items={site.comparison.before} />
-        </Reveal>
-        <Reveal delay={0.08}>
-          <ComparisonPanel title={site.comparison.afterTitle} tone="after" items={site.comparison.after} />
-        </Reveal>
-      </div>
-    </section>
-  )
-}
-
-function ComparisonPanel({
-  title,
-  tone,
-  items,
-}: {
-  title: string
-  tone: 'before' | 'after'
-  items: string[]
-}) {
-  return (
-    <article className="border border-line bg-white p-5 shadow-soft md:p-7">
-      <div className="flex items-center justify-between border-b border-line pb-5">
-        <h3 className="text-2xl font-semibold text-charcoal">{title}</h3>
-        <span
-          className={cn(
-            'font-ui text-xs font-semibold uppercase tracking-[0.16em]',
-            tone === 'after' ? 'text-accent' : 'text-muted',
-          )}
-        >
-          {tone === 'after' ? 'Clear' : 'Scattered'}
-        </span>
-      </div>
-      <ul className="mt-5 grid gap-3">
-        {items.map((item, index) => (
-          <li key={item} className="flex items-center gap-3">
-            <span
-              className={cn(
-                'flex h-7 w-7 shrink-0 items-center justify-center rounded-full border font-ui text-xs',
-                tone === 'after'
-                  ? 'border-accent bg-accent text-white'
-                  : 'border-line bg-paper text-muted',
-              )}
-            >
-              {tone === 'after' ? <Check className="h-3.5 w-3.5" /> : index + 1}
-            </span>
-            <span className="text-base leading-7 text-charcoal">{item}</span>
-          </li>
-        ))}
-      </ul>
-    </article>
-  )
-}
-
 function WhatWeBuild() {
   return (
     <section className="section-shell">
       <Reveal>
         <SectionHeader label={site.services.label} title={site.services.title} />
       </Reveal>
-      <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
         {site.services.items.map((item, index) => {
           const Icon = serviceIcons[index]
           return (
             <Reveal key={item.title} delay={(index % 3) * 0.04}>
-              <article className="group h-full border border-line bg-white p-6 shadow-soft transition duration-200 hover:-translate-y-1 hover:border-accent/60">
+              <article className="group h-full border border-line bg-white p-5 shadow-soft transition duration-200 hover:-translate-y-1 hover:border-accent/60">
                 <div className="flex h-11 w-11 items-center justify-center rounded-full bg-paper text-accent ring-1 ring-line">
                   <Icon className="h-5 w-5" aria-hidden="true" />
                 </div>
-                <h3 className="mt-6 text-xl font-semibold leading-snug text-charcoal">{item.title}</h3>
+                <h3 className="mt-5 text-lg font-semibold leading-snug text-charcoal">{item.title}</h3>
                 <dl className="mt-5 grid gap-4 text-sm leading-6">
                   <div>
                     <dt className="font-ui text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">
@@ -419,53 +379,16 @@ function WhatWeBuild() {
   )
 }
 
-function CaseStory() {
-  return (
-    <section id="case-story" className="section-shell border-y border-line bg-charcoal text-white">
-      <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-        <Reveal>
-          <div className="sticky top-8">
-            <Label>{site.caseStory.label}</Label>
-            <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">
-              {site.caseStory.title}
-            </h2>
-            <p className="mt-6 font-ui text-sm uppercase tracking-[0.16em] text-stone-300">
-              {site.caseStory.company}
-            </p>
-          </div>
-        </Reveal>
-        <Reveal delay={0.08}>
-          <article className="border border-white/15 bg-white/[0.04] p-6 shadow-soft md:p-8">
-            <p className="text-xl leading-9 text-stone-100">{site.caseStory.situation}</p>
-            <div className="my-8 h-px bg-white/15" />
-            <div className="grid gap-4">
-              {site.caseStory.build.map((item) => (
-                <div key={item} className="flex gap-3">
-                  <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-green-300" aria-hidden="true" />
-                  <p className="leading-7 text-stone-200">{item}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-8 border-l-2 border-green-300 pl-5">
-              <p className="text-lg leading-8 text-white">{site.caseStory.result}</p>
-            </div>
-          </article>
-        </Reveal>
-      </div>
-    </section>
-  )
-}
-
 function Process() {
   return (
     <section className="section-shell">
       <Reveal>
         <SectionHeader label={site.process.label} title={site.process.title} />
       </Reveal>
-      <div className="mt-12 grid gap-0 border border-line bg-white shadow-soft md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid gap-0 border border-line bg-white shadow-soft md:grid-cols-2 lg:grid-cols-4">
         {site.process.steps.map((step, index) => (
           <Reveal key={step} delay={(index % 3) * 0.04}>
-            <div className="min-h-36 border-b border-line p-6 md:border-r lg:border-b-0">
+            <div className="min-h-32 border-b border-line p-6 md:border-r lg:border-b-0">
               <p className="font-ui text-xs font-semibold uppercase tracking-[0.16em] text-accent">
                 Step {String(index + 1).padStart(2, '0')}
               </p>
@@ -473,6 +396,97 @@ function Process() {
             </div>
           </Reveal>
         ))}
+      </div>
+    </section>
+  )
+}
+
+function EnquiryForm() {
+  const [name, setName] = useState('')
+  const [topic, setTopic] = useState(site.enquiry.topics[0])
+  const [message, setMessage] = useState('')
+
+  const mailtoHref = useMemo(() => {
+    const subject = `ClearOpsHK 查詢：${topic}`
+    const body = [
+      name ? `姓名 / 公司：${name}` : '姓名 / 公司：',
+      `查詢主題：${topic}`,
+      '',
+      '留言內容：',
+      message,
+    ].join('\n')
+
+    return `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+  }, [message, name, topic])
+
+  return (
+    <section id="enquiry" className="section-shell border-y border-line bg-white">
+      <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+        <Reveal>
+          <div className="max-w-xl">
+            <SectionHeader
+              label={site.enquiry.label}
+              title={site.enquiry.title}
+              intro={site.enquiry.intro}
+            />
+            <p className="mt-6 text-base leading-7 text-muted">
+              {site.enquiry.directEmail}{' '}
+              <a className="font-semibold text-accent" href={`mailto:${site.email}`}>
+                {site.email}
+              </a>
+            </p>
+          </div>
+        </Reveal>
+        <Reveal delay={0.08}>
+          <form
+            className="grid gap-5 border border-line bg-paper p-5 shadow-soft md:p-7"
+            onSubmit={(event) => {
+              event.preventDefault()
+              window.location.href = mailtoHref
+            }}
+          >
+            <label className="grid gap-2">
+              <span className="font-ui text-sm font-semibold text-charcoal">{site.enquiry.nameLabel}</span>
+              <input
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                className="min-h-12 border border-line bg-white px-4 text-base text-charcoal outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                name="name"
+                autoComplete="name"
+              />
+            </label>
+            <label className="grid gap-2">
+              <span className="font-ui text-sm font-semibold text-charcoal">{site.enquiry.topicLabel}</span>
+              <select
+                value={topic}
+                onChange={(event) => setTopic(event.target.value)}
+                className="min-h-12 border border-line bg-white px-4 text-base text-charcoal outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                name="topic"
+              >
+                {site.enquiry.topics.map((item) => (
+                  <option key={item}>{item}</option>
+                ))}
+              </select>
+            </label>
+            <label className="grid gap-2">
+              <span className="font-ui text-sm font-semibold text-charcoal">{site.enquiry.messageLabel}</span>
+              <textarea
+                value={message}
+                onChange={(event) => setMessage(event.target.value)}
+                className="min-h-36 resize-y border border-line bg-white px-4 py-3 text-base leading-7 text-charcoal outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                name="message"
+                placeholder={site.enquiry.messagePlaceholder}
+              />
+            </label>
+            <a
+              href={mailtoHref}
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 font-ui text-sm font-semibold text-white transition hover:bg-accentDark focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-paper"
+            >
+              <Mail className="h-4 w-4" aria-hidden="true" />
+              {site.enquiry.button}
+            </a>
+          </form>
+        </Reveal>
       </div>
     </section>
   )
@@ -534,13 +548,15 @@ function FinalCta() {
     <section className="section-shell bg-accent text-white">
       <Reveal>
         <div className="mx-auto max-w-4xl text-center">
-          <Label>{site.name}</Label>
+          <div className="flex justify-center">
+            <BrandLockup inverse />
+          </div>
           <h2 className="mt-5 text-4xl font-semibold leading-tight md:text-6xl">
             {site.finalCta.headline}
           </h2>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
             <a
-              href={`mailto:${site.email}`}
+              href="#enquiry"
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-5 py-3 font-ui text-sm font-semibold text-accent transition hover:bg-paper"
             >
               <Mail className="h-4 w-4" aria-hidden="true" />
@@ -558,9 +574,7 @@ function Footer() {
     <footer className="border-t border-line bg-charcoal px-5 py-10 text-stone-300 md:px-8">
       <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="font-ui text-sm font-semibold uppercase tracking-[0.16em] text-white">
-            {site.name}
-          </p>
+          <BrandLockup inverse />
           <p className="mt-3 text-sm">{site.email}</p>
           <p className="mt-1 text-sm">Hong Kong</p>
         </div>
@@ -582,10 +596,9 @@ function App() {
     <>
       <Hero />
       <main>
+        <EnquiryForm />
         <ProblemScene />
-        <BeforeAfter />
         <WhatWeBuild />
-        <CaseStory />
         <Process />
         <Pricing />
         <WhyClearOps />

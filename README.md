@@ -7,6 +7,8 @@ Premium static landing page for ClearOpsHK, built with React, Vite, TypeScript, 
 ```text
 .
 ├── public/
+│   ├── brand/
+│   │   └── clearopshk-mark.svg
 │   ├── favicon.svg
 │   └── og-clearopshk.svg
 ├── src/
