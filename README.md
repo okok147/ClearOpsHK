@@ -93,16 +93,22 @@ No environment variables, backend, database, or paid API are required.
 This repo is configured for:
 
 ```text
-https://okok147.github.io/ClearOpsHK/
+https://clearopshk.com/
 ```
 
-The GitHub Pages base path is set in `vite.config.ts`:
+The GitHub Pages custom domain is stored in:
+
+```text
+public/CNAME
+```
+
+The Vite base path is set in `vite.config.ts`:
 
 ```ts
-base: '/ClearOpsHK/',
+base: '/',
 ```
 
-If the repository name changes, update that value before deploying.
+If you remove the custom domain and return to the project URL `https://okok147.github.io/ClearOpsHK/`, update `base` to `'/ClearOpsHK/'`.
 
 Build the site:
 
