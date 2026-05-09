@@ -445,9 +445,10 @@ function EnquiryForm() {
               window.location.href = mailtoHref
             }}
           >
-            <label className="grid gap-2">
+            <label className="grid gap-2" htmlFor="enquiry-name">
               <span className="font-ui text-sm font-semibold text-charcoal">{site.enquiry.nameLabel}</span>
               <input
+                id="enquiry-name"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
                 className="min-h-12 border border-line bg-white px-4 text-base text-charcoal outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
@@ -455,9 +456,10 @@ function EnquiryForm() {
                 autoComplete="name"
               />
             </label>
-            <label className="grid gap-2">
+            <label className="grid gap-2" htmlFor="enquiry-topic">
               <span className="font-ui text-sm font-semibold text-charcoal">{site.enquiry.topicLabel}</span>
               <select
+                id="enquiry-topic"
                 value={topic}
                 onChange={(event) => setTopic(event.target.value)}
                 className="min-h-12 border border-line bg-white px-4 text-base text-charcoal outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
@@ -468,9 +470,10 @@ function EnquiryForm() {
                 ))}
               </select>
             </label>
-            <label className="grid gap-2">
+            <label className="grid gap-2" htmlFor="enquiry-message">
               <span className="font-ui text-sm font-semibold text-charcoal">{site.enquiry.messageLabel}</span>
               <textarea
+                id="enquiry-message"
                 value={message}
                 onChange={(event) => setMessage(event.target.value)}
                 className="min-h-36 resize-y border border-line bg-white px-4 py-3 text-base leading-7 text-charcoal outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
