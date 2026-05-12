@@ -4,12 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        paper: '#F6F7F4',
+        paper: '#F8F6F0',
         cream: '#FFFFFF',
         charcoal: '#111111',
         muted: '#5E625E',
         slate: '#34415A',
-        line: '#DCE2D8',
+        line: '#D8D2C4',
         accent: '#0D3B66',
         accentDark: '#082944',
         amber: '#C59B4E',

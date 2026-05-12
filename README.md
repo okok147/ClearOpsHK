@@ -13,6 +13,12 @@ Premium static landing page for ClearOpsHK, built with React, Vite, TypeScript, 
 │   │   ├── clearopshk-logo.jpg
 │   │   ├── favicon-32.png
 │   │   └── icon-512.png
+│   ├── photos/
+│   │   ├── other-side-corridor.jpg
+│   │   ├── other-side-desk.jpg
+│   │   ├── other-side-files.jpg
+│   │   ├── other-side-shop.jpg
+│   │   └── other-side-worktable.jpg
 ├── src/
 │   ├── content/
 │   │   └── site.ts
@@ -40,6 +46,7 @@ Look for `TODO` comments before launch:
 
 - Threads URL
 - Pricing placeholders
+- Replace placeholder cinematic photos with real, consented business photos
 - GitHub Pages base path in `vite.config.ts`
 
 ## Install
