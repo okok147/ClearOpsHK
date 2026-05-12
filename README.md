@@ -100,25 +100,29 @@ No environment variables, backend, database, or paid API are required.
 
 ## Deploy to GitHub Pages
 
-This repo is configured for:
+This repo is currently configured for:
 
 ```text
-https://clearopshk.com/
-```
-
-The GitHub Pages custom domain is stored in:
-
-```text
-public/CNAME
+https://okok147.github.io/ClearOpsHK/
 ```
 
 The Vite base path is set in `vite.config.ts`:
 
+```text
+base: '/ClearOpsHK/',
+```
+
+If you register and connect the custom domain `clearopshk.com`, add a `public/CNAME` file:
+
+```text
+clearopshk.com
+```
+
+Then update `vite.config.ts` back to:
+
 ```ts
 base: '/',
 ```
-
-If you remove the custom domain and return to the project URL `https://okok147.github.io/ClearOpsHK/`, update `base` to `'/ClearOpsHK/'`.
 
 Build the site:
 

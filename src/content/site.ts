@@ -2,8 +2,8 @@ export const site = {
   name: 'ClearOpsHK',
   email: 'enquiry@clearopshk.com',
   brand: {
-    logo: '/brand/clearopshk-logo-cropped.png',
-    mark: '/brand/icon-512.png',
+    logo: 'brand/clearopshk-logo-cropped.png',
+    mark: 'brand/icon-512.png',
     alt: 'ClearOpsHK lion C logo',
   },
   // TODO: Replace with the real Threads profile URL before launch.
@@ -48,31 +48,31 @@ export const site = {
     // TODO: Replace these placeholder images with real, consented business photos from ClearOpsHK projects.
     items: [
       {
-        src: '/photos/other-side-corridor.jpg',
+        src: 'photos/other-side-corridor.jpg',
         alt: '透過玻璃和走廊看見辦公室深處的安靜光線',
         caption: '門外看見的，只是一個安靜空間。另一面，是每天流動的訊息和交接。',
         meta: 'WINDOW / REFLECTION',
       },
       {
-        src: '/photos/other-side-desk.jpg',
+        src: 'photos/other-side-desk.jpg',
         alt: '桌面上的文件、紙張和手機形成一個工作痕跡構圖',
         caption: '一張桌，幾份文件，一部電話。很多跟進其實已經在這裡留下線索。',
         meta: 'DESK / TRACE',
       },
       {
-        src: '/photos/other-side-files.jpg',
+        src: 'photos/other-side-files.jpg',
         alt: '一排文件夾在柔和光線下形成檔案牆',
         caption: '文件不是雜物。它們是客戶、報價和決定曾經經過的地方。',
         meta: 'FILES / MEMORY',
       },
       {
-        src: '/photos/other-side-shop.jpg',
+        src: 'photos/other-side-shop.jpg',
         alt: '營業前後的店內角落與空椅',
         caption: '一天結束後，真正需要整理的往往不是店面，而是尚未完成的下一步。',
         meta: 'AFTER HOURS',
       },
       {
-        src: '/photos/other-side-worktable.jpg',
+        src: 'photos/other-side-worktable.jpg',
         alt: '工作桌上的紙張與手部輪廓',
         caption: '交接不是一句「你跟一跟」。交接需要看得見的狀態和下一步。',
         meta: 'HANDOVER',
